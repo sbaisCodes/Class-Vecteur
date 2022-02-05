@@ -58,6 +58,7 @@ class Vecteur3d : public Vecteur2d {
 		// question 2: il faut mettre les donnees priver de la classe mere comme proteger (protected)
 	public: 
 		Vecteur3d(double xx=0, double yy=0, double zz = 0){
+			// on peut appeler le constructeur de la classe mere mais il faut faire attention : x et y seront toujouts met a 0.
 			x = xx;
 			y = yy;
 			z = zz;
@@ -67,7 +68,8 @@ class Vecteur3d : public Vecteur2d {
 			return res_vecteur;
 		}
 		friend ostream& operator<<(ostream& o,Vecteur3d& v );
-		
+		friend istream& operator>>(istream& in,Vecteur3d& v );
+
 		Vecteur3d& operator=(const Vecteur3d& v){
 			x = v.x ; 
 			y = v.y;
@@ -78,6 +80,17 @@ class Vecteur3d : public Vecteur2d {
 
 ostream&  operator<<(ostream& o,Vecteur3d& v ){
 			o<<"( "<< v.x << ", "<< v.y << ", "<<v.z<<" )\n";
+			return o;
+		}
+istream&  operator>>(istream& in,Vecteur3d& v ){
+			cout<< "Enter x : ";
+			in>>v.x;
+			cout<< "Enter y : ";
+			in>>v.y;
+			cout<< "Enter z : ";
+			in>>v.z;
+			return in;
+			
 			return o;
 		}
 	
